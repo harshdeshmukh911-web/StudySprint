@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>StudySprint - Ultimate Study Tools Collection</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https://*; font-src 'self' https://cdnjs.cloudflare.com;">
+<meta name="description" content="Free study tools: timers, calculators, converters, and more. Boost your productivity with StudySprint!">
+<meta name="keywords" content="study tools, productivity, timer, calculator, converter, dictionary">
+<meta name="author" content="StudySprint">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+
+<body>
+
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+<div class="bubble"></div>
+
+<div style="position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px;">
+    <select id="bgSelect" style="padding: 10px; border: none; border-radius: 25px; background: rgba(255,255,255,0.9); cursor: pointer; font-size: 0.9em;">
+        <option value="default">Default BG</option>
+        <option value="gradient">Gradient</option>
+        <option value="blue">Blue Sky</option>
+        <option value="nature">Nature</option>
+        <option value="sunset">Sunset</option>
+        <option value="stars">Starry Night</option>
+    </select>
+    <button id="themeToggle" style="padding: 10px 15px; border: none; border-radius: 25px; background: linear-gradient(45deg, #667eea, #764ba2); color: white; cursor: pointer; font-size: 0.9em; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        🌙 Dark Mode
+    </button>
+</div>
+
+<h1>StudySprint</h1>
+
+<p style="font-size: 1.2em; margin-bottom: 30px; color: #555; text-shadow: none;">Your ultimate collection of study tools to ace your exams! 📚✨</p>
+
+<div class="tools">
+
+<a href="tools/marks-calculator.html"><i class="fas fa-percentage"></i> Percentage Finder</a>
+<a href="tools/cgpa-calculator.html"><i class="fas fa-graduation-cap"></i> CGPA Calculator</a>
+<a href="tools/study-timer.html"><i class="fas fa-clock"></i> Study Timer</a>
+<a href="tools/flashcards.html"><i class="fas fa-brain"></i> Flashcards</a>
+<a href="tools/unit-converter.html"><i class="fas fa-exchange-alt"></i> Unit Converter</a>
+<a href="tools/age-calculator.html"><i class="fas fa-birthday-cake"></i> Age Calculator</a>
+<a href="tools/pdf-merge.html"><i class="fas fa-file-pdf"></i> PDF Merge</a>
+<a href="tools/image-to-pdf.html"><i class="fas fa-image"></i> Image to PDF</a>
+<a href="tools/simple-calculator.html"><i class="fas fa-calculator"></i> Simple Calculator</a>
+<a href="tools/todo-list.html"><i class="fas fa-list-check"></i> To-Do List</a>
+<a href="tools/word-counter.html"><i class="fas fa-font"></i> Word Counter</a>
+<a href="tools/stats.html"><i class="fas fa-chart-bar"></i> Study Stats</a>
+<a href="tools/trees.html"><i class="fas fa-tree"></i> My Trees (Study Timer Trees)</a>
+<a href="tools/password-generator.html"><i class="fas fa-lock"></i> Password Generator</a>
+<a href="tools/currency-converter.html"><i class="fas fa-money-bill-wave"></i> Currency Converter</a>
+<a href="tools/text-to-speech.html"><i class="fas fa-volume-up"></i> Text to Speech</a>
+<a href="tools/dictionary.html"><i class="fas fa-book"></i> Dictionary</a>
+
+</div>
+
+<div style="text-align: center; margin: 40px 0; padding: 20px; background: #fff; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+    <h3 style="color: #2c3e50; margin-bottom: 15px;">🚀 Ready to Ace Your Studies?</h3>
+    <p style="font-size: 1.1em; margin-bottom: 20px;">Join thousands of students using StudySprint to boost productivity and track progress!</p>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <div class="cta-card">
+            <i class="fas fa-clock fa-2x"></i><br>
+            <strong>Track Time</strong><br>
+            Study smarter
+        </div>
+        <div class="cta-card">
+            <i class="fas fa-chart-bar fa-2x"></i><br>
+            <strong>View Stats</strong><br>
+            Monitor progress
+        </div>
+    <div style="text-align: center; margin: 40px 0; padding: 30px; background: linear-gradient(135deg, rgba(255,107,107,0.1), rgba(107,203,119,0.1)); border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1);">
+        <h3 style="color: #FF6B6B; margin-bottom: 15px;">💾 Save Your Progress</h3>
+        <p style="font-size: 1em; margin-bottom: 20px; color: #555;">Your progress is automatically saved on this device. No login needed!</p>
+        <div style="font-size: 0.95em; margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.8); border-radius: 10px;">
+            <strong>Last Saved:</strong> <span id="lastSaveTime">Never</span><br>
+            <strong>Total Study Time:</strong> <span id="progressStudyTime">00:00:00</span><br>
+            <strong>Trees Grown:</strong> <span id="progressTrees">0</span>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+            <button id="saveProgressBtn" style="padding: 12px 25px; background: linear-gradient(45deg, #FF6B6B, #FFB84D); color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+                💾 Save Progress Now
+            </button>
+            <button id="exportProgressBtn" style="padding: 12px 25px; background: linear-gradient(45deg, #6BCB77, #4D96FF); color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+                📥 Export Data
+            </button>
+            <button id="importProgressBtn" style="padding: 12px 25px; background: linear-gradient(45deg, #FFD93D, #FF9F1C); color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+                📤 Import Data
+            </button>
+            <button id="clearProgressBtn" style="padding: 12px 25px; background: #ccc; color: #333; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+                🗑️ Clear All
+            </button>
+            <button id="viewFeedbackBtn" style="padding: 12px 25px; background: #6BCB77; color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease;">
+                🔐 View Feedback
+            </button>
+        </div>
+        <input type="file" id="importFile" style="display: none;" accept=".json">
+    </div>
+
+<footer>
+    <p>🚀 Boost your productivity with StudySprint! | Made with ❤️ for students</p>
+    <p>🔄 More tools and cool features coming soon! Stay tuned for updates.</p>
+    <p>© 2026 StudySprint. All rights are reserved.</p>
+</footer>
+
+<button id="scrollToTop" style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; border: none; border-radius: 50%; background: linear-gradient(45deg, #FF6B6B, #FFB84D); color: white; font-size: 20px; cursor: pointer; opacity: 0; transition: all 0.3s ease; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+    ↑
+</button>
+
+<button id="feedbackBtn" style="position: fixed; bottom: 90px; right: 20px; width: 50px; height: 50px; border: none; border-radius: 50%; background: linear-gradient(45deg, #6BCB77, #4D96FF); color: white; font-size: 20px; cursor: pointer; opacity: 1; transition: all 0.3s ease; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;" title="Send Feedback">
+    💬
+</button>
+
+<!-- Feedback Modal -->
+<div id="feedbackModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; justify-content: center; align-items: center;">
+    <div style="background: white; border-radius: 15px; padding: 30px; max-width: 500px; width: 90%; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="margin: 0; color: #FF6B6B;">📝 Send Your Feedback</h2>
+            <button id="closeFeedback" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #999;">&times;</button>
+        </div>
+
+        <p style="color: #666; margin-bottom: 20px;">We'd love to hear your thoughts! Help us improve StudySprint.</p>
+
+        <form id="feedbackForm" style="display: flex; flex-direction: column; gap: 15px;">
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #333;">Your Name (Optional)</label>
+                <input type="text" id="feedbackName" placeholder="e.g., John Doe" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; box-sizing: border-box; transition: border-color 0.3s;">
+            </div>
+
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #333;">Email (Optional)</label>
+                <input type="email" id="feedbackEmail" placeholder="your@email.com" style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; box-sizing: border-box; transition: border-color 0.3s;">
+            </div>
+
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #333;">Feedback Type *</label>
+                <select id="feedbackType" required style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; box-sizing: border-box;">
+                    <option value="">Select a type...</option>
+                    <option value="bug">🐛 Bug Report</option>
+                    <option value="feature">✨ Feature Request</option>
+                    <option value="improvement">📈 Improvement</option>
+                    <option value="praise">👍 Praise</option>
+                    <option value="other">💭 Other</option>
+                </select>
+            </div>
+
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #333;">Your Feedback *</label>
+                <textarea id="feedbackMessage" placeholder="Tell us what you think..." required style="width: 100%; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 1em; min-height: 120px; box-sizing: border-box; resize: vertical; font-family: inherit;" maxlength="1000"></textarea>
+                <small style="color: #999; display: block; margin-top: 5px;"><span id="charCount">0</span>/1000 characters</small>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="submit" id="submitFeedback" style="flex: 1; padding: 12px; background: linear-gradient(45deg, #FF6B6B, #FFB84D); color: white; border: none; border-radius: 8px; font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s;">
+                    ✉️ Send Feedback
+                </button>
+                <button type="button" id="closeFeedback2" style="flex: 1; padding: 12px; background: #ddd; color: #333; border: none; border-radius: 8px; font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s;">
+                    Cancel
+                </button>
+            </div>
+
+            <p style="font-size: 0.85em; color: #999; margin: 0; text-align: center;">All feedback is kept confidential and helps us improve.</p>
+        </form>
+
+        <div id="feedbackSuccess" style="display: none; text-align: center; padding: 30px 0;">
+            <div style="font-size: 48px; margin-bottom: 15px;">✅</div>
+            <h3 style="color: #6BCB77; margin-bottom: 10px;">Thank You!</h3>
+            <p style="color: #666; margin-bottom: 20px;">Your feedback has been received. We appreciate your input!</p>
+            <button id="closeFeedbackSuccess" style="padding: 10px 25px; background: linear-gradient(45deg, #6BCB77, #4D96FF); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const bgSelect = document.getElementById('bgSelect');
+    const body = document.body;
+    
+    // Check for saved theme preference
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        themeToggle.textContent = '☀️ Light Mode';
+    }
+    
+    // Check for saved background
+    const currentBg = localStorage.getItem('background') || 'default';
+    bgSelect.value = currentBg;
+    applyBackground(currentBg);
+    
+    themeToggle.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+    
+    bgSelect.addEventListener('change', function() {
+        const selectedBg = bgSelect.value;
+        localStorage.setItem('background', selectedBg);
+        applyBackground(selectedBg);
+    });
+    
+    function applyBackground(bg) {
+        body.style.background = '';
+        body.classList.remove('bg-gradient', 'bg-blue', 'bg-nature');
+        
+        switch(bg) {
+            case 'gradient':
+                body.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                break;
+            case 'blue':
+                body.style.background = 'linear-gradient(135deg, #74b9ff 0%, #0984e3 100%)';
+                break;
+            case 'nature':
+                body.style.background = 'linear-gradient(135deg, #a8e6cf 0%, #4ecdc4 100%)';
+                break;
+            case 'sunset':
+                body.style.background = 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%)';
+                break;
+            case 'stars':
+                body.style.background = 'linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%)';
+                break;
+            default:
+                body.style.background = '#f8f9fa';
+        }
+    }
+});
+
+// Scroll to top functionality
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollToTopBtn.style.opacity = '1';
+        scrollToTopBtn.style.transform = 'scale(1)';
+    } else {
+        scrollToTopBtn.style.opacity = '0';
+        scrollToTopBtn.style.transform = 'scale(0)';
+    }
+});
+
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Parallax effect for title
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const h1 = document.querySelector('h1');
+    h1.style.transform = `translateY(${scrolled * 0.5}px)`;
+});
+
+// ===== PROGRESS MANAGEMENT SYSTEM =====
+
+// Load and display progress on page load
+function loadProgressDisplay() {
+    const totalStudyTime = parseInt(localStorage.getItem('totalStudyTime')) || 0;
+    const treesGrown = parseInt(localStorage.getItem('treesGrown')) || 0;
+    const lastSaveTime = localStorage.getItem('lastSaveTime') || 'Never';
+    
+    // Display progress info
+    document.getElementById('progressTrees').textContent = treesGrown;
+    document.getElementById('lastSaveTime').textContent = lastSaveTime;
+    
+    // Format and display study time
+    let hrs = Math.floor(totalStudyTime / 3600);
+    let mins = Math.floor((totalStudyTime % 3600) / 60);
+    let secs = totalStudyTime % 60;
+    document.getElementById('progressStudyTime').textContent =
+        (hrs < 10 ? "0" + hrs : hrs) + ":" +
+        (mins < 10 ? "0" + mins : mins) + ":" +
+        (secs < 10 ? "0" + secs : secs);
+}
+
+// Save progress to localStorage with timestamp
+document.getElementById('saveProgressBtn').addEventListener('click', function() {
+    const now = new Date();
+    const timestamp = now.toLocaleString();
+    localStorage.setItem('lastSaveTime', timestamp);
+    
+    // Show confirmation
+    const originalText = this.textContent;
+    this.textContent = '✅ Saved!';
+    setTimeout(() => {
+        this.textContent = originalText;
+    }, 2000);
+    
+    loadProgressDisplay();
+});
+
+// Export progress as JSON file
+document.getElementById('exportProgressBtn').addEventListener('click', function() {
+    const progressData = {
+        totalStudyTime: localStorage.getItem('totalStudyTime'),
+        treesGrown: localStorage.getItem('treesGrown'),
+        dailyStats: localStorage.getItem('dailyStats'),
+        theme: localStorage.getItem('theme'),
+        background: localStorage.getItem('background'),
+        exportDate: new Date().toLocaleString()
+    };
+    
+    const dataStr = JSON.stringify(progressData, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `StudySprint_Progress_${new Date().getTime()}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    
+    // Show confirmation
+    const originalText = this.textContent;
+    this.textContent = '✅ Downloaded!';
+    setTimeout(() => {
+        this.textContent = originalText;
+    }, 2000);
+});
+
+// Import progress from JSON file
+document.getElementById('importProgressBtn').addEventListener('click', function() {
+    document.getElementById('importFile').click();
+});
+
+document.getElementById('importFile').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        try {
+            const progressData = JSON.parse(event.target.result);
+            
+            // Restore progress
+            if (progressData.totalStudyTime) localStorage.setItem('totalStudyTime', progressData.totalStudyTime);
+            if (progressData.treesGrown) localStorage.setItem('treesGrown', progressData.treesGrown);
+            if (progressData.dailyStats) localStorage.setItem('dailyStats', progressData.dailyStats);
+            if (progressData.theme) localStorage.setItem('theme', progressData.theme);
+            if (progressData.background) localStorage.setItem('background', progressData.background);
+            localStorage.setItem('lastSaveTime', new Date().toLocaleString());
+            
+            alert('✅ Progress imported successfully! Refresh the page to see updates.');
+            loadProgressDisplay();
+        } catch (error) {
+            alert('❌ Error importing file. Please make sure it\'s a valid StudySprint data file.');
+        }
+    };
+    reader.readAsText(file);
+    
+    // Reset file input
+    e.target.value = '';
+});
+
+// Clear all progress with confirmation
+document.getElementById('clearProgressBtn').addEventListener('click', function() {
+    if (confirm('⚠️ Are you sure? This will delete all your saved progress. This action cannot be undone.')) {
+        localStorage.clear();
+        localStorage.setItem('lastSaveTime', 'Never');
+        alert('✅ All progress cleared!');
+        loadProgressDisplay();
+        location.reload();
+    }
+});
+
+// ===== FEEDBACK FORM LOGIC =====
+const feedbackBtn = document.getElementById('feedbackBtn');
+
+// use password to view feedbacks
+const viewFeedbackBtn = document.getElementById('viewFeedbackBtn');
+viewFeedbackBtn.addEventListener('click', () => {
+    const pwd = prompt('Enter admin password to view feedback:');
+    const correct = 'StudyIsBest'; // change as needed
+    if (pwd === correct) {
+        const list = JSON.parse(localStorage.getItem('feedbackList') || '[]');
+        if (list.length === 0) {
+            alert('No feedback messages stored yet.');
+            return;
+        }
+        let text = '--- Feedback Messages ---\n';
+        list.forEach((f,i) => {
+            text += `\n${i+1}. [${f.date}] (${f.type}) ${f.name?f.name+' - ':''}${f.email?f.email+' - ':''}\n`;
+            text += `${f.message}\n`;
+        });
+        const win = window.open('', '_blank');
+        win.document.write('<pre>' + text.replace(/</g,'&lt;') + '</pre>');
+    } else {
+        alert('Incorrect password.');
+    }
+});
+
+// Load progress display on page load
+loadProgressDisplay();
+const feedbackModal = document.getElementById('feedbackModal');
+const closeFeedback = document.getElementById('closeFeedback');
+const closeFeedback2 = document.getElementById('closeFeedback2');
+const closeFeedbackSuccess = document.getElementById('closeFeedbackSuccess');
+const feedbackForm = document.getElementById('feedbackForm');
+const feedbackMessage = document.getElementById('feedbackMessage');
+const charCount = document.getElementById('charCount');
+
+function openFeedbackModal() {
+    feedbackModal.style.display = 'flex';
+}
+function closeFeedbackModal() {
+    feedbackModal.style.display = 'none';
+    feedbackForm.style.display = 'flex';
+    document.getElementById('feedbackSuccess').style.display = 'none';
+}
+
+feedbackBtn.addEventListener('click', openFeedbackModal);
+closeFeedback.addEventListener('click', closeFeedbackModal);
+closeFeedback2.addEventListener('click', closeFeedbackModal);
+closeFeedbackSuccess.addEventListener('click', closeFeedbackModal);
+
+// update character count
+feedbackMessage.addEventListener('input', () => {
+    charCount.textContent = feedbackMessage.value.length;
+});
+
+// handle submission
+feedbackForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('feedbackName').value.trim();
+    const email = document.getElementById('feedbackEmail').value.trim();
+    const type = document.getElementById('feedbackType').value;
+    const message = feedbackMessage.value.trim();
+    
+    if (!type || !message) {
+        alert('Please select feedback type and enter your message.');
+        return;
+    }
+    
+    // store feedback locally (could be synced to server later)
+    const existing = JSON.parse(localStorage.getItem('feedbackList') || '[]');
+    existing.push({ name, email, type, message, date: new Date().toISOString() });
+    localStorage.setItem('feedbackList', JSON.stringify(existing));
+    
+    feedbackForm.style.display = 'none';
+    document.getElementById('feedbackSuccess').style.display = 'block';
+});
+
+// open modal when user wants (for example for mobile) if needed
+
+// Export feedback button could be added later
+
+// End feedback logic
+
+// ===== CHATBOT LOGIC =====
+// Chatbot functionality removed
+
+// End chatbot logic
+</script>
+
+</body>
+</html>
