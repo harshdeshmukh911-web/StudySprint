@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Study Timer</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="tool-page">
+
+<a href="../Index.html" style="position: absolute; top: 10px; left: 10px; color: #667eea; text-decoration: none; font-weight: bold;">← Back to Home</a>
+
+<h2>Study Timer</h2>
+
+<p>Boost your productivity! Start the timer and watch your virtual tree grow as you study. Earn 1 tree for every 30 minutes studied!</p>
+
+<div style="margin: 20px 0; font-size: 1.1em;">
+    <strong>Total Study Time:</strong> <span id="totalTime">00:00:00</span> | 
+    <strong>Trees Grown:</strong> <span id="treesCount">0</span> | 
+    <strong>Session Trees:</strong> <span id="sessionTrees">0</span>
+</div>
+
+<h1 id="timer">00:00:00</h1>
+
+<div id="tree" style="position: relative; width: 50px; height: 100px; margin: 20px auto;">
+    <div id="trunk" style="width: 10px; height: 30px; background: #8B4513; position: absolute; bottom: 0; left: 20px;"></div>
+    <div id="leaves" style="width: 40px; height: 0px; background: green; position: absolute; bottom: 30px; left: 5px; border-radius: 50% 50% 0 0; transition: height 1s;"></div>
+</div>
+
+<button onclick="startTimer()">Start</button>
+<button onclick="stopTimer()">Stop</button>
+<button onclick="resetTimer()">Reset</button>
+
+<script src="../js/timer.js"></script>
+
+</body>
+</html>

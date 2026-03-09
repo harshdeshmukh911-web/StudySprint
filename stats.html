@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Study Stats</title>
+<link rel="stylesheet" href="../style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="tool-page">
+
+<a href="../Index.html" style="position: absolute; top: 10px; left: 10px; color: #667eea; text-decoration: none; font-weight: bold;">← Back to Home</a>
+
+<h2>Study Stats</h2>
+
+<p>Track your study progress! See your total study time and the number of trees you've grown.</p>
+
+<div style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
+    <h3>📊 Total Stats</h3>
+    <p>Total Study Time: <span id="totalTime">0</span> seconds</p>
+    <p>Trees Grown: <span id="trees">0</span></p>
+</div>
+
+<div style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin-bottom: 20px;">
+    <h3>📈 Study Time Trends</h3>
+    <canvas id="timeChart" width="400" height="200"></canvas>
+</div>
+
+<div style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <h3>🌳 Tree Growth Progress</h3>
+    <canvas id="treeChart" width="400" height="200"></canvas>
+</div>
+
+<script src="../js/stats.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const body = document.body;
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+    }
+});
+</script>
+
+</body>
+</html>

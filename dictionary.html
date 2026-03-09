@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dictionary</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="tool-page">
+
+<a href="../Index.html" style="position: absolute; top: 10px; left: 10px; color: #667eea; text-decoration: none; font-weight: bold;">← Back to Home</a>
+
+<h2>📚 Dictionary</h2>
+
+<p>Look up word definitions, pronunciations, and examples. Expand your vocabulary!</p>
+
+<div style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <input id="word" placeholder="Enter a word..." style="width: 70%; padding: 10px; border: 2px solid #667eea; border-radius: 5px;">
+    <button onclick="searchWord()" style="font-size: 1.2em; padding: 10px 20px;">🔍 Search</button><br><br>
+
+    <div id="result" style="min-height: 200px;"></div>
+</div>
+
+<script src="../js/dictionary.js"></script>
+
+</body>
+</html>

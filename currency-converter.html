@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Currency Converter</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="tool-page">
+
+<a href="../Index.html" style="position: absolute; top: 10px; left: 10px; color: #667eea; text-decoration: none; font-weight: bold;">← Back to Home</a>
+
+<h2>💱 Currency Converter</h2>
+
+<p>Convert currencies with real-time exchange rates. Perfect for international transactions!</p>
+
+<div style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <input id="amount" type="number" placeholder="Amount" step="0.01"><br><br>
+
+    <select id="fromCurrency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="INR">INR</option>
+        <option value="JPY">JPY</option>
+    </select>
+    <span> to </span>
+    <select id="toCurrency">
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
+        <option value="INR">INR</option>
+        <option value="JPY">JPY</option>
+    </select><br><br>
+
+    <button onclick="convertCurrency()" style="font-size: 1.2em; padding: 10px 20px;">Convert</button><br><br>
+
+    <div id="result" style="font-size: 1.2em; font-weight: bold;"></div>
+</div>
+
+<script src="../js/currency.js"></script>
+
+</body>
+</html>

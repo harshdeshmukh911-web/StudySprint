@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image to PDF</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="tool-page">
+
+<a href="../Index.html" style="position: absolute; top: 10px; left: 10px; color: #667eea; text-decoration: none; font-weight: bold;">← Back to Home</a>
+
+<h2>Image to PDF</h2>
+
+<p>Convert your images to PDF format quickly! Upload an image and download as PDF.</p>
+
+<input type="file" id="imageInput" accept="image/*">
+
+<br><br>
+
+<button onclick="convert()">Convert to PDF</button>
+
+<a id="download" style="display:none">Download PDF</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../js/imagepdf.js"></script>
+
+</body>
+</html>
